@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Fechas</title>
+</head>
+
+<body>
+    <form action="index.js" class="fechas">
+        <select name="dia" id="dia">
+            <option value="" disabled selected>Seleccione Dia</option>
+        </select>
+        <select name="mes" id="mes">
+            <option value="" disabled selected>Seleccione Mes</option>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+    </form>
+
+    <script>
+        // alert("esta funcionando");
+
+        // ... (previous code)
+
+        var mes = document.getElementById('mes');
+        var dia = document.getElementById('dia');
+
+        mes.addEventListener('change', function () {
+            var selectedMonth = parseInt(mes.value);
+            var numDays = [31, (selectedMonth == 2) ? 28 : 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            dia.innerHTML = '';
+
+            for (let index = 0; index < numDays[selectedMonth - 1]; index++) {
+                var opcion = '<option value="' + (index + 1) + '">' + (index + 1) + '</option>';
+                dia.innerHTML += opcion;
+            }
+        });
+
+        // ... (previous code)
+    </script>
+</body>
+
+</html>
